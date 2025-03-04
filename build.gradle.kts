@@ -68,6 +68,7 @@ dependencies {
     implementation ("org.springframework.boot:spring-boot-starter-web")
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude (group = "org.junit.vintage", module = "junit-vintage-engine")
+        implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.5")
     }
 }
 
