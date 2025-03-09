@@ -17,13 +17,13 @@ import uk.tw.energy.service.MeterReadingService;
 public class MeterReadingControllerTest {
 
     private static final String SMART_METER_ID = "10101010";
-    private MeterReadingController meterReadingController;
+    private MeterReadingsController meterReadingController;
     private MeterReadingService meterReadingService;
 
     @BeforeEach
     public void setUp() {
         this.meterReadingService = new MeterReadingService(new HashMap<>());
-        this.meterReadingController = new MeterReadingController(meterReadingService);
+        this.meterReadingController = new MeterReadingsController(meterReadingService);
     }
 
     @Test

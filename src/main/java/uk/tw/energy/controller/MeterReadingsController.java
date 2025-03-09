@@ -18,11 +18,11 @@ import uk.tw.energy.service.MeterReadingService;
 @RestController
 @Validated
 @RequestMapping("/readings")
-public class MeterReadingController {
+public class MeterReadingsController {
 
     private final MeterReadingService meterReadingService;
 
-    public MeterReadingController(MeterReadingService meterReadingService) {
+    public MeterReadingsController(MeterReadingService meterReadingService) {
         this.meterReadingService = meterReadingService;
     }
 
@@ -34,7 +34,7 @@ public class MeterReadingController {
 
 
     @GetMapping("/read/{smartMeterId}")
-    public ResponseEntity<List<ElectricityReading>> readReadings(@PathVariable String smartMeterId) {
+    public ResponseEntity<List<ElectricityReading>> getMeterReadingsById(@PathVariable String smartMeterId) {
             return meterReadingService.getReadings(smartMeterId)
                     .filter(readings -> !readings.isEmpty()) // Only proceed if the list is not empty
                     .map(ResponseEntity::ok) // Wrap in ResponseEntity.ok
