@@ -47,10 +47,11 @@ public class MeterReadingController {
 //    }
 
     @GetMapping("/read/{smartMeterId}")
-    public ResponseEntity readReadings(@PathVariable String smartMeterId) {
-        Optional<List<ElectricityReading>> readings = meterReadingService.getReadings(smartMeterId);
-        return readings.isPresent()
-                ? ResponseEntity.ok(readings.get())
-                : ResponseEntity.notFound().build();
+    public ResponseEntity<List<ElectricityReading>> readReadings(@PathVariable String smartMeterId) {
+            return meterReadingService.getReadings(smartMeterId)
+                    .filter(readings -> !readings.isEmpty()) // Only proceed if the list is not empty
+                    .map(ResponseEntity::ok) // Wrap in ResponseEntity.ok
+                    .orElseGet(() -> ResponseEntity.notFound().build()); // Handle empty case
+        }
+
     }
-}
