@@ -27,4 +27,5 @@ public class MeterReadingServiceTest {
         meterReadingService.storeReadings("random-id", new ArrayList<>());
         assertThat(meterReadingService.getReadings("random-id")).isEqualTo(Optional.of(new ArrayList<>()));
     }
+
 }
